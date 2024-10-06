@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Card, Space } from "antd";
+import { Card, Collapse, Space } from "antd";
 import "./PostsPage.css";
 import Page from "./Page";
 
@@ -42,8 +42,20 @@ function PostCard(props: PostCardProps) {
   const { post } = props;
 
   return (
-    <Card className="post-card">
-      <h3>{post.title}</h3>
-    </Card>
+    <Collapse
+      bordered={false}
+      className="post-card"
+      items={[
+        {
+          key: "1",
+          label: post.title,
+          children: (
+            <Card className="post-card-body">
+              <p>{post.body}</p>
+            </Card>
+          ),
+        },
+      ]}
+    />
   );
 }
