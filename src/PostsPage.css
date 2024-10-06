@@ -22,7 +22,7 @@
 }
 
 .post-card-body > .ant-card-body {
-  padding: 0;
+  padding: 0 !important;
   border: none;
 }
 
@@ -30,8 +30,41 @@
   margin-top: 0;
 }
 
-.post-card,
-.ant-card-head {
-  color: black;
-  border-color: black !important;
+.post-container {
+  min-width: 500px;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.search-icon svg path {
+  fill: #939393;
+}
+.search-icon {
+  left: 20px;
+}
+
+.search-icon path {
+  transition: 200ms ease;
+}
+
+.close-icon {
+  right: 20px;
+  pointer-events: none;
+  opacity: 0;
+  border: none;
+  background-color: transparent;
+  transition: 200ms ease;
+  cursor: pointer;
+}
+
+.close-icon.has-text {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.input-container:focus-within .input-icon.search-icon path {
+  fill: #000;
 }
