@@ -22,7 +22,7 @@
 }
 
 .post-card-body > .ant-card-body {
-  padding: 0 !important;
+  padding: 0;
   border: none;
 }
 
