@@ -1,7 +1,7 @@
+import { Navigate } from "react-router-dom";
 import Page from "../layout/Page";
 import PostsPage from "../posts/PostsPage";
 import UserDetailsPage from "../users/UserDetailsPage";
-import { Navigate } from "react-router-dom";
 
 export const routes = [
   {
