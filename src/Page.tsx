@@ -6,7 +6,7 @@ import {
 import { Dropdown, Layout, Space } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Page.css";
 import AvatarButton from "./AvatarButton";
 import { User } from "./types";
@@ -49,12 +49,22 @@ export default function Page(props: PageProps) {
     <Layout>
       <Header className="page-header">
         <div className="page-header-item left">
-          <Link to="/active-user">
+          <NavLink
+            to="/active-user"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
             <AvatarButton icon={<UserOutlined />} />
-          </Link>
-          <Link to="/posts">
+          </NavLink>
+          <NavLink
+            to="/posts"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
             <AvatarButton icon={<UnorderedListOutlined />} />
-          </Link>
+          </NavLink>
         </div>
         <h1>{title}</h1>
         <div className="page-header-item right">

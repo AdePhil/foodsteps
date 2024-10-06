@@ -41,3 +41,7 @@
 .active-user {
   background-color: rgba(0, 0, 0, 0.08);
 }
+
+.nav-link.active .avatar-button {
+  background-color: rgb(255, 245, 168);
+}
