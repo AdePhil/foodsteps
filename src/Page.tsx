@@ -8,8 +8,9 @@ import { Content, Header } from "antd/es/layout/layout";
 import "./Page.css";
 import AvatarButton from "./AvatarButton";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { User } from "./types";
+import { useActiveUser } from "./context/ActiveUserContext";
 
 interface PageProps {
   title: string;
@@ -20,6 +21,7 @@ export default function Page(props: PageProps) {
   const { title, children } = props;
 
   const [users, setUsers] = useState<User[]>([]);
+  const { activeUser, setActiveUser } = useActiveUser();
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users`)
@@ -34,8 +36,14 @@ export default function Page(props: PageProps) {
     label: <span>{user.name}</span>,
     icon: <UserOutlined />,
     id: user.id,
-    onClick: () => {},
+    onClick: () => setActiveUser(user.id),
+    className: user.id === activeUser ? "active-user" : "",
   }));
+
+  const activeUserDetails = useMemo(
+    () => users.find((item) => item.id === activeUser),
+    [users, activeUser]
+  );
 
   return (
     <Layout>
@@ -53,6 +61,7 @@ export default function Page(props: PageProps) {
           <Dropdown menu={{ items }} trigger={["click"]}>
             <button className="dropdown-button">
               <Space>
+                {activeUserDetails && <h3>{activeUserDetails.name}</h3>}
                 <CaretDownOutlined />
               </Space>
             </button>
