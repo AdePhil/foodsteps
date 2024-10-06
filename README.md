@@ -33,7 +33,7 @@ We recommend spending about 2 hours on this task. If there is anything you misse
 
 - [x] Modularized the app with a proper folder structure.
 - [x] Made navigation links active.
-- [x] Used Layout from React Router to avoid wrapping each page component with a - layout component.
+- [x] Used Layout from React Router to avoid wrapping each page with a layout component.
 - [x] Moved some dependencies to dev dependencies.
 
 ### Future Improvements
