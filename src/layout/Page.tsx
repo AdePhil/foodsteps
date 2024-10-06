@@ -3,23 +3,17 @@ import {
   UnorderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Dropdown, Layout, Space } from "antd";
+import { Layout, Dropdown, Space } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
-import { useEffect, useMemo, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
 import "./Page.css";
-import AvatarButton from "./AvatarButton";
-import { User } from "./types";
-import { useActiveUser } from "./context/ActiveUserContext";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { User } from "../types";
+import AvatarButton from "../components/avatar";
+import { useEffect, useMemo, useState } from "react";
+import { useActiveUser } from "../context/ActiveUserContext";
+import { routeTitleMap } from "../router/routes";
 
-interface PageProps {
-  title: string;
-  children: JSX.Element;
-}
-
-export default function Page(props: PageProps) {
-  const { title, children } = props;
-
+export default function Page() {
   const [users, setUsers] = useState<User[]>([]);
   const { activeUser, setActiveUser } = useActiveUser();
 
@@ -44,6 +38,9 @@ export default function Page(props: PageProps) {
     () => users.find((item) => item.id === activeUser),
     [users, activeUser]
   );
+
+  const location = useLocation();
+  const title = routeTitleMap[location.pathname] || "Posts";
 
   return (
     <Layout>
@@ -78,7 +75,9 @@ export default function Page(props: PageProps) {
           </Dropdown>
         </div>
       </Header>
-      <Content className="page-content">{children}</Content>
+      <Content className="page-content">
+        <Outlet />
+      </Content>
     </Layout>
   );
 }

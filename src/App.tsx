@@ -1,12 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import PostsPage from "./PostsPage";
 import "./App.css";
 import { ConfigProvider } from "antd";
-import UserDetailsPage from "./UserDetailsPage";
 import { ActiveUserProvider } from "./context/ActiveUserContext";
-
-export const DEFAULT_USER_ID = 1;
+import Router from "./router";
 
 function App() {
   return (
@@ -19,13 +14,7 @@ function App() {
       }}
     >
       <ActiveUserProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="posts" element={<PostsPage />} />
-            <Route path="active-user" element={<UserDetailsPage />} />
-            <Route path="*" element={<PostsPage />} />
-          </Routes>
-        </BrowserRouter>
+        <Router />
       </ActiveUserProvider>
     </ConfigProvider>
   );

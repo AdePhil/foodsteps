@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Spin } from "antd";
-import Page from "./Page";
-import { User } from "./types";
-import { useActiveUser } from "./context/ActiveUserContext";
+import { User } from "../types";
+import { useActiveUser } from "../context/ActiveUserContext";
 
 export default function UserDetailsPage() {
   const [userDetails, setUserDetails] = useState<User | null>(null);
@@ -17,7 +16,7 @@ export default function UserDetailsPage() {
   }, [activeUser]);
 
   return (
-    <Page title="User Details">
+    <>
       {userDetails === null ? (
         <Spin />
       ) : (
@@ -36,6 +35,6 @@ export default function UserDetailsPage() {
           </p>
         </div>
       )}
-    </Page>
+    </>
   );
 }
