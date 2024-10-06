@@ -26,7 +26,7 @@ We recommend spending about 2 hours on this task. If there is anything you misse
 
 - [x] Added dropdown to select users.
 - [x] Expanded post to show post details.
-- [x] Added search bar to the Posts page.###
+- [x] Added search bar to the Posts page.
 - [x] Added a sample test for the input.
 
 ### Improvements Made
